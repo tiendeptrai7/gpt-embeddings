@@ -13,8 +13,7 @@ def get_available_indexes():
 
 
 with st.sidebar:
-    st.title("💬 Chat with Your Doc")
-    st.write("Upload a document and ask questions about it.")
+    st.title("💬 Open AI Embeddings")
 
     with st.form("Upload and Process"):
         # Dropdown for selecting an index or uploaded file
