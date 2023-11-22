@@ -23,10 +23,6 @@ OPENAI_EMBEDDING_DEPLOYMENT_NAME_DEFAULT = "gpt-3.5-turbo"
 CHUNK_SIZE_DEFAULT = 1000
 CHUNK_OVERLAP_DEFAULT = 0
 
-os.environ["CHAT_MODEL_NAME"] = 'gpt-3.5-turbo'
-os.environ["OPENAI_API_KEY"] = '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'
-
-
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container, initial_text=""):
         self.container = container
