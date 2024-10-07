@@ -123,7 +123,7 @@ class DocChatbot:
         #check if user is using API from openai.com or Azure OpenAI Service by inspecting the api key
         if self.api_key.startswith("sk-"):
             # user is using API from openai.com
-            assert(len(self.api_key) == 51)
+            # assert(len(self.api_key) == 51)
             self.init_llm_openai(False)
         else:
             # user is using Azure OpenAI Service
