@@ -37,7 +37,6 @@ class DocChatbot:
     llm: ChatOpenAI()
     condense_question_llm: ChatOpenAI
     embeddings: OpenAIEmbeddings
-    vector_db: FAISS
     chatchain: BaseConversationalRetrievalChain
 
     # configuration for API calls
@@ -116,6 +115,7 @@ class DocChatbot:
         load_dotenv()
         assert(os.getenv("OPENAI_API_KEY") is not None)
         self.api_key = str(os.getenv("OPENAI_API_KEY"))
+        self.vector_db = FAISS()  # Initialize the vector_db attribute
         self.request_timeout = REQUEST_TIMEOUT_DEFAULT if os.getenv("REQUEST_TIMEOUT") is None else int(os.getenv("REQUEST_TIMEOUT"))
         self.temperature = TEMPERATURE_DEFAULT if os.getenv("TEMPERATURE") is None else float(os.getenv("TEMPERATURE"))
         self.chat_model_name = CHAT_MODEL_NAME_DEFAULT if os.getenv("CHAT_MODEL_NAME") is None else str(os.getenv("CHAT_MODEL_NAME"))
