@@ -121,25 +121,29 @@ class DocChatbot:
         self.chat_model_name = CHAT_MODEL_NAME_DEFAULT if os.getenv("CHAT_MODEL_NAME") is None else str(os.getenv("CHAT_MODEL_NAME"))
 
         #check if user is using API from openai.com or Azure OpenAI Service by inspecting the api key
-        if self.api_key.startswith("sk-"):
-            # user is using API from openai.com
-            # assert(len(self.api_key) == 51)
-            self.init_llm_openai(False)
-        else:
-            # user is using Azure OpenAI Service
-            self.init_llm_azure(False)
+        # if self.api_key.startswith("sk-"):
+        #     # user is using API from openai.com
+        #     assert(len(self.api_key) == 51)
+        #     self.init_llm_openai(False)
+        # else:
+        #     # user is using Azure OpenAI Service
+        #     self.init_llm_azure(False)
+        self.init_llm_openai(False)
+
 
         self.embeddings = OpenAIEmbeddings(base_url='https://api.openai.com/v1/') # type: ignore
 
     def init_streaming(self, condense_question_container, answer_container) -> None:
         #init for LLM and Embeddings, with support for streaming
 
-        if self.api_key.startswith("sk-"):
-            # user is using API from openai.com
-            self.init_llm_openai(True, condense_question_container, answer_container)
-        else:
-            # user is using Azure OpenAI Service
-            self.init_llm_azure(True, condense_question_container, answer_container)
+        # if self.api_key.startswith("sk-"):
+        #     # user is using API from openai.com
+        #     self.init_llm_openai(True, condense_question_container, answer_container)
+        # else:
+        #     # user is using Azure OpenAI Service
+        #     self.init_llm_azure(True, condense_question_container, answer_container)
+        self.init_llm_openai(True, condense_question_container, answer_container)
+
         
     def init_chatchain(self, chain_type: str = "stuff") -> None:
         # init for ConversationalRetrievalChain
